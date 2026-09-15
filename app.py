@@ -1,12 +1,11 @@
-import os
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from supabase import create_client, Client
 
-# Supabase-Verbindung herstellen
-SUPABASE_URL = os.environ.get("SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+# Zugangsdaten direkt aus den Streamlit Secrets lesen
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 @st.cache_resource
 def init_supabase() -> Client:
